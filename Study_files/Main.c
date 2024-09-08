@@ -30,25 +30,38 @@ int main(void)
 
     // number를 변수로 만드는 것보다, number[n]의 리스트 형태로 정의하면 할 수 있는 작업들이 많아진다.
 
-    int number[10];
+    #define SIZE 100
+    int number[SIZE];
     int total = 0;
-    int manx, min;
+    int max, min;
     float avg = 0.0;
     srand(time(NULL));
-    for (int i=0; i<10; i++){
+    for (int i=0; i<SIZE; i++){
         number[i] = (rand() % 100) + 1;
     }
-    for(int i=0; i<10; i++){
+    for(int i=0; i<SIZE; i++){
         printf("%3d\t", number[i]);
-        if((i+1) % 5 == 0) {
+        if((i+1) % 10 == 0) {
             printf("\n");
         }
     }
-    for(int i=0; i<10; i++){
+    for(int i=0; i<SIZE; i++){
         total += number[i];
     }
-    avg = total / 10.0;
-    printf("%f", avg);
+    avg = (float)total / SIZE;
+
+    max = number[0];
+    min = number[0];
+
+    for(int i=1; i<SIZE; i++){
+        if(max < number[i]){
+            max = number[i];
+        }
+        if(max > number[i]){
+            min = number[i];
+        }
+    }
+    printf("avg = %f, max = %d, min = %d", avg, max, min);
     
     return 0;
 }
