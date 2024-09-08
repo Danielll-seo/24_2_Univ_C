@@ -67,14 +67,24 @@ int main(void)
     // 배열 실습3
     // 정렬
     int number[SIZE];
+    int most;
+    int temp;
     srand(time(NULL));
 
     for (int i=0; i<SIZE; i++){
         number[i] = (rand() % 100) + 1;
     }
 
-    for (int i=0; i<SIZE; i++){
-
+    for (int i=0; i<SIZE-1; i++){
+        most = i;
+        for (int j = i+1; j < SIZE; j++){
+            if(number[most] < number[j]){
+                most = j;
+            }
+        }
+        temp = number[i];
+        number[i] = number[most];
+        number[most] = temp;
     }
 
     for(int i=0; i<SIZE; i++){
