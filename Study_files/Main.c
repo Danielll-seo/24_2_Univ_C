@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#define SIZE 100
 
 // random num func
 int main(void)
@@ -30,38 +31,58 @@ int main(void)
 
     // number를 변수로 만드는 것보다, number[n]의 리스트 형태로 정의하면 할 수 있는 작업들이 많아진다.
 
-    #define SIZE 100
+    // -> srand를 이용한 난수 출력, 평균, 최대, 최소 구하기 (재열 실습2)
+    // int number[SIZE];
+    // int total = 0;
+    // int max, min;
+    // float avg = 0.0;
+    // srand(time(NULL));
+    // for (int i=0; i<SIZE; i++){
+    //     number[i] = (rand() % 100) + 1;
+    // }
+    // for(int i=0; i<SIZE; i++){
+    //     printf("%3d\t", number[i]);
+    //     if((i+1) % 10 == 0) {
+    //         printf("\n");
+    //     }
+    // }
+    // for(int i=0; i<SIZE; i++){
+    //     total += number[i];
+    // }
+    // avg = (float)total / SIZE;
+
+    // max = number[0];
+    // min = number[0];
+
+    // for(int i=1; i<SIZE; i++){
+    //     if(max < number[i]){
+    //         max = number[i];
+    //     }
+    //     if(max > number[i]){
+    //         min = number[i];
+    //     }
+    // }
+    // printf("avg = %f, max = %d, min = %d", avg, max, min);
+
+    // 배열 실습3
+    // 정렬
     int number[SIZE];
-    int total = 0;
-    int max, min;
-    float avg = 0.0;
     srand(time(NULL));
+
     for (int i=0; i<SIZE; i++){
         number[i] = (rand() % 100) + 1;
     }
+
+    for (int i=0; i<SIZE; i++){
+
+    }
+
     for(int i=0; i<SIZE; i++){
         printf("%3d\t", number[i]);
         if((i+1) % 10 == 0) {
             printf("\n");
         }
     }
-    for(int i=0; i<SIZE; i++){
-        total += number[i];
-    }
-    avg = (float)total / SIZE;
-
-    max = number[0];
-    min = number[0];
-
-    for(int i=1; i<SIZE; i++){
-        if(max < number[i]){
-            max = number[i];
-        }
-        if(max > number[i]){
-            min = number[i];
-        }
-    }
-    printf("avg = %f, max = %d, min = %d", avg, max, min);
     
     return 0;
 }
