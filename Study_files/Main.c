@@ -3,10 +3,18 @@
 #include <time.h>
 #define SIZE 100
 
+void swap(int* a, int* b){
+    // ì´ í•¨ìˆ˜ëŠ” Mainí•¨ìˆ˜ì˜ ë°°ì—´ì‹¤ìŠµ 3(ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬)ì— í•„ìš”í•œ swapí•¨ìˆ˜ì´ë‹¤.
+    int temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
 // random num func
 int main(void)
 {
-    // int i = 0;
+    /* int i = 0;
     // i = rand();
     // printf("i = %d", i);
 
@@ -25,13 +33,13 @@ int main(void)
     //     printf("random_number = %d\n", number[i]);
     // }
 
-    // int rand() ¿Í void srand()ÀÇ Â÷ÀÌÁ¡
-    // > int rand°¡ µ¿ÀÏÇÑ seed¸¦ °¡Áö°í 0ºÎÅÍ RAND_MAX »çÀÌÀÇ ÀÇ»ç ³­¼ö¸¦ ¹İÈ¯ÇÑ´Ù¸é
-    // > void srand´Â seed¸¦ ÃÊ±âÈ­ÇÑ´Ù. º¸Åë seed´Â time(NULL)·Î ¼³Á¤µÈ´Ù.
+    // int rand() ì™€ void srand()ì˜ ì°¨ì´ì 
+    // > int randê°€ ë™ì¼í•œ seedë¥¼ ê°€ì§€ê³  0ë¶€í„° RAND_MAX ì‚¬ì´ì˜ ì˜ì‚¬ ë‚œìˆ˜ë¥¼ ë°˜í™˜í•œë‹¤ë©´
+    // > void srandëŠ” seedë¥¼ ì´ˆê¸°í™”í•œë‹¤. ë³´í†µ seedëŠ” time(NULL)ë¡œ ì„¤ì •ëœë‹¤.
 
-    // number¸¦ º¯¼ö·Î ¸¸µå´Â °Íº¸´Ù, number[n]ÀÇ ¸®½ºÆ® ÇüÅÂ·Î Á¤ÀÇÇÏ¸é ÇÒ ¼ö ÀÖ´Â ÀÛ¾÷µéÀÌ ¸¹¾ÆÁø´Ù.
+    // numberë¥¼ ë³€ìˆ˜ë¡œ ë§Œë“œëŠ” ê²ƒë³´ë‹¤, number[n]ì˜ ë¦¬ìŠ¤íŠ¸ í˜•íƒœë¡œ ì •ì˜í•˜ë©´ í•  ìˆ˜ ìˆëŠ” ì‘ì—…ë“¤ì´ ë§ì•„ì§„ë‹¤.
 
-    // -> srand¸¦ ÀÌ¿ëÇÑ ³­¼ö Ãâ·Â, Æò±Õ, ÃÖ´ë, ÃÖ¼Ò ±¸ÇÏ±â (Àç¿­ ½Ç½À2)
+    // -> srandë¥¼ ì´ìš©í•œ ë‚œìˆ˜ ì¶œë ¥, í‰ê· , ìµœëŒ€, ìµœì†Œ êµ¬í•˜ê¸° (ì¬ì—´ ì‹¤ìŠµ2)
     // int number[SIZE];
     // int total = 0;
     // int max, min;
@@ -63,10 +71,11 @@ int main(void)
     //     }
     // }
     // printf("avg = %f, max = %d, min = %d", avg, max, min);
+    */
 
-    // ¹è¿­ ½Ç½À3
-    // Á¤·Ä
-    int number[SIZE];
+    // ë°°ì—´ ì‹¤ìŠµ3
+    // ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬
+    int number[SIZE] = {0};
     int most;
     int temp;
     srand(time(NULL));
@@ -82,9 +91,7 @@ int main(void)
                 most = j;
             }
         }
-        temp = number[i];
-        number[i] = number[most];
-        number[most] = temp;
+        swap(&number[i], &number[most]);
     }
 
     for(int i=0; i<SIZE; i++){
@@ -96,3 +103,4 @@ int main(void)
     
     return 0;
 }
+
