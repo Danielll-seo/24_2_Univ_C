@@ -3,13 +3,23 @@
 #include <time.h>
 #define SIZE 100
 
-void swap(int* a, int* b){
-    // 이 함수는 Main함수의 배열실습 3(내림차순 정렬)에 필요한 swap함수이다.
-    int temp;
-    temp = *a;
-    *a = *b;
-    *b = temp;
-}
+// void swap(int* a, int* b){
+//     // 이 함수는 Main함수의 배열실습 3(내림차순 정렬)에 필요한 swap함수이다.
+//     int temp;
+//     temp = *a;
+//     *a = *b;
+//     *b = temp;
+// }
+
+// void test(int* p, char* cp)
+// {
+//     printf("test : p = %p, cp = %p\n", p, cp);
+//     test : p = 0x7fff840d4d0c;
+//     cp = 0x7fff840d4d0b;
+//     *p = 60;
+//     p++;
+//     cp++;
+// }
 
 // random num func
 int main(void)
@@ -75,32 +85,38 @@ int main(void)
 
     // 배열 실습3
     // 내림차순 정렬
-    int number[SIZE] = {0};
-    int most;
-    int temp;
-    srand(time(NULL));
+    // int number[SIZE] = {0};
+    // int most;
+    // int temp;
+    // srand(time(NULL));
 
-    for (int i=0; i<SIZE; i++){
-        number[i] = (rand() % 100) + 1;
-    }
+    // for (int i=0; i<SIZE; i++){
+    //     number[i] = (rand() % 100) + 1;
+    // }
 
-    for (int i=0; i<SIZE-1; i++){
-        most = i;
-        for (int j = i+1; j < SIZE; j++){
-            if(number[most] < number[j]){
-                most = j;
-            }
-        }
-        swap(&number[i], &number[most]);
-    }
+    // for (int i=0; i<SIZE-1; i++){
+    //     most = i;
+    //     for (int j = i+1; j < SIZE; j++){
+    //         if(number[most] < number[j]){
+    //             most = j;
+    //         }
+    //     }
+    //     swap(&number[i], &number[most]);
+    // }
 
-    for(int i=0; i<SIZE; i++){
-        printf("%3d\t", number[i]);
-        if((i+1) % 10 == 0) {
-            printf("\n");
-        }
-    }
-    
+    // for(int i=0; i<SIZE; i++){
+    //     printf("%3d\t", number[i]);
+    //     if((i+1) % 10 == 0) {
+    //         printf("\n");
+    //     }
+    // }
+
+    // test 함수
+    // int a = 50;
+    // char ch = '*';
+    // printf("main : a = %d, ch = %d\n", a, ch);
+    // main : a = 50, ch = 42;
+    // test(&a, &ch);
+
     return 0;
 }
-
