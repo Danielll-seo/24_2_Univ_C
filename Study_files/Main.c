@@ -21,7 +21,22 @@
 //     cp++;
 // }
 
-// random num func
+void inputRandomArray(int* array, int size)
+{
+    for(int i=0; i<size; i++){
+        *(array+i) = rand() % 100;
+    }
+}
+
+void printArray(int* array, int size)
+{
+    for(int i=0; i<size; i++){
+        printf("%3d\n", *(array+i));
+        if((i+1) % 10 == 0){
+            printf("\n");
+        }
+    }
+}
 int main(void)
 {
     /* int i = 0;
@@ -117,6 +132,12 @@ int main(void)
     // printf("main : a = %d, ch = %d\n", a, ch);
     // main : a = 50, ch = 42;
     // test(&a, &ch);
+
+    int number[SIZE];
+
+    srand(time(NULL));
+    inputRandomArray(&number[0], SIZE);
+    printArray(number, SIZE);
 
     return 0;
 }
