@@ -139,6 +139,7 @@ int main(void)
     // printArray(number, SIZE);
 
     // 쇼핑몰 재고수량관리
+    int id;
     int num;
     int Count;
     
@@ -165,6 +166,11 @@ int main(void)
         sell_product[i] = num;
         Num_of_Product[i] = Num_of_Product[i] - sell_product[i];
     }
+
+    // id
+    printf("상품의 id입력 > ");
+    scanf("%d", &id);
+    printf("해당 id의 재고 > %d", Num_of_Product[id]);
 
     return 0;
 }
