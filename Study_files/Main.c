@@ -172,10 +172,19 @@ int main(void)
     // scanf("%d", &id);
     // printf("해당 id의 재고 > %d", Num_of_Product[id]);
 
-    char Message2[5] = {'a', 'b', 'c', 'd', 'e'};
-    char Message[5] = {'a', 'b', 'c', '\0'};
+    // char Message2[5] = {'a', 'b', 'c', 'd', 'e'};
+    // char Message[5] = {'a', 'b', 'c', '\0'};
     
-    printf("message = %s, message2 = %s", Message, Meassage2);
+    // printf("message = %s, message2 = %s", Message, Message2);
+
+    int ch;
+    char message[100];
+    int i = 0;
+    while((ch = getchar()) != '\n'){
+        message[i++] = ch;
+    }
+    message[i] = '\0';
+    printf("%s", message);
 
     return 0;
 }
