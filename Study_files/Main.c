@@ -177,14 +177,35 @@ int main(void)
     
     // printf("message = %s, message2 = %s", Message, Message2);
 
+    // int ch;
+    // char message[100];
+    // int i = 0;
+    // while((ch = getchar()) != '\n'){
+    //     message[i++] = ch;
+    // }
+    // message[i] = '\0';
+    // printf("%s", message);
+
+    char input[200] = "";
+    int count[26] = {0};
     int ch;
-    char message[100];
     int i = 0;
-    while((ch = getchar()) != '\n'){
-        message[i++] = ch;
+    
+    while((ch = getchar()) != EOF){
+        input[i++] = ch;
     }
-    message[i] = '\0';
-    printf("%s", message);
+    i = 0;
+    while(input[i] != '\0'){
+        if(input[i] >= 'a' && input[i] <= 'z'){
+            count[input[i] - 'a']++;
+        }
+        i++;
+    }
+    
+    printf("입력문자열 : %s\n", input);
+    for(int i=0;i<26;i++){
+        printf("%c 출연횟수 : %d\n", 'a' + i, count[i]);
+    }
 
     return 0;
 }
