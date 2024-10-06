@@ -139,39 +139,40 @@ int main(void)
     // printArray(number, SIZE);
 
     // 쇼핑몰 재고수량관리
-    // int id;
-    // int num;
-    // int Count;
-    //
-    // printf("입고할 상품의 개수(종류)를 입력하세요 > ");
-    // scanf("%d", &Count);
-    //
-    // int Num_of_Product[Count];
-    // int sell_product[Count];
-    //
-    // int b = sizeof(Num_of_Product) / sizeof(int);
-    // int c = sizeof(sell_product) / sizeof(int);
-    // printf("Num_of_Product > %d\n", b);
-    // printf("sell_product %d\n", c);
-    //
-    // for(int i=0; i<Count; i++){
-    //     printf("%d번째 상품의 갯수를 입력 > ", i+1);
-    //     scanf("%d", &num);
-    //     Num_of_Product[i] = num;
-    // }
-    //
-    // for(int i=0; i<Count; i++){
-    //     printf("%d번째 상품의 판매수량 입력 > ", i+1);
-    //     scanf("%d", &num);
-    //     sell_product[i] = num;
-    //     Num_of_Product[i] = Num_of_Product[i] - sell_product[i];
-    // }
-    //
-    // // id
-    // printf("상품의 id입력 > ");
-    // scanf("%d", &id);
-    // printf("해당 id의 재고 > %d", Num_of_Product[id]);
+    int id;
+    int num;
+    int Count;
+    
+    printf("입고할 상품의 개수(종류)를 입력하세요 > ");
+    scanf("%d", &Count);
+    
+    int Num_of_Product[Count];
+    int sell_product[Count];
+    
+    int b = sizeof(Num_of_Product) / sizeof(int);
+    int c = sizeof(sell_product) / sizeof(int);
+    printf("Num_of_Product > %d\n", b);
+    printf("sell_product %d\n", c);
+    
+    for(int i=0; i<Count; i++){
+        printf("%d번째 상품의 갯수를 입력 > ", i+1);
+        scanf("%d", &num);
+        Num_of_Product[i] = num;
+    }
+    
+    for(int i=0; i<Count; i++){
+        printf("%d번째 상품의 판매수량 입력 > ", i+1);
+        scanf("%d", &num);
+        sell_product[i] = num;
+        Num_of_Product[i] = Num_of_Product[i] - sell_product[i];
+    }
+    
+    // id
+    printf("상품의 id입력 > ");
+    scanf("%d", &id);
+    printf("해당 id의 재고 > %d\n", Num_of_Product[id]);
 
+    // 문자열 입문
     // char Message2[5] = {'a', 'b', 'c', 'd', 'e'};
     // char Message[5] = {'a', 'b', 'c', '\0'};
     
@@ -186,26 +187,26 @@ int main(void)
     // message[i] = '\0';
     // printf("%s", message);
 
-    char input[200] = "";
-    int count[26] = {0};
-    int ch;
-    int i = 0;
+    // char input[200] = "";
+    // int count[26] = {0};
+    // int ch;
+    // int i = 0;
     
-    while((ch = getchar()) != EOF){
-        input[i++] = ch;
-    }
-    i = 0;
-    while(input[i] != '\0'){
-        if(input[i] >= 'a' && input[i] <= 'z'){
-            count[input[i] - 'a']++;
-        }
-        i++;
-    }
+    // while((ch = getchar()) != EOF){
+    //     input[i++] = ch;
+    // }
+    // i = 0;
+    // while(input[i] != '\0'){
+    //     if(input[i] >= 'a' && input[i] <= 'z'){
+    //         count[input[i] - 'a']++;
+    //     }
+    //     i++;
+    // }
     
-    printf("입력문자열 : %s\n", input);
-    for(int i=0;i<26;i++){
-        printf("%c 출연횟수 : %d\n", 'a' + i, count[i]);
-    }
+    // printf("입력문자열 : %s\n", input);
+    // for(int i=0;i<26;i++){
+    //     printf("%c 출연횟수 : %d\n", 'a' + i, count[i]);
+    // }
 
     return 0;
 }
