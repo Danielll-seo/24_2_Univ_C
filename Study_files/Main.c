@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <math.h>
 #define SIZE 100
 
 // void swap(int* a, int* b){
-//     // ì´ í•¨ìˆ˜ëŠ” Mainí•¨ìˆ˜ì˜ ë°°ì—´ì‹¤ìŠµ 3(ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬)ì— í•„ìš”í•œ swapí•¨ìˆ˜ì´ë‹¤.
+//     // ÀÌ ÇÔ¼ö´Â MainÇÔ¼öÀÇ ¹è¿­½Ç½À 3(³»¸²Â÷¼ø Á¤·Ä)¿¡ ÇÊ¿äÇÑ swapÇÔ¼öÀÌ´Ù.
 //     int temp;
 //     temp = *a;
 //     *a = *b;
@@ -37,6 +38,27 @@
 //         }
 //     }
 // }
+
+// ±¸Á¶Ã¼ ½Ç½À 
+typedef struct pint{
+    int x;
+    int y;
+}POINT;
+
+typedef struct circle{
+    POINT center;   // ¿øÀÇ Áß½É
+    double radius;  // ¹İÁö¸§
+}CIRCLE;
+
+typedef struct rect{
+    POINT lb;   // left bottom
+    POINT rt;   // right top
+}RECT;
+
+double dist(POINT p1, POINT p2){
+    return sqrt(pow((p2.x - p1.x),2)+pow((p2.y - p1.y),2));
+}
+
 int main(void)
 {
     /* int i = 0;
@@ -58,13 +80,13 @@ int main(void)
     //     printf("random_number = %d\n", number[i]);
     // }
 
-    // int rand() ì™€ void srand()ì˜ ì°¨ì´ì 
-    // > int randê°€ ë™ì¼í•œ seedë¥¼ ê°€ì§€ê³  0ë¶€í„° RAND_MAX ì‚¬ì´ì˜ ì˜ì‚¬ ë‚œìˆ˜ë¥¼ ë°˜í™˜í•œë‹¤ë©´
-    // > void srandëŠ” seedë¥¼ ì´ˆê¸°í™”í•œë‹¤. ë³´í†µ seedëŠ” time(NULL)ë¡œ ì„¤ì •ëœë‹¤.
+    // int rand() ¿Í void srand()ÀÇ Â÷ÀÌÁ¡
+    // > int rand°¡ µ¿ÀÏÇÑ seed¸¦ °¡Áö°í 0ºÎÅÍ RAND_MAX »çÀÌÀÇ ÀÇ»ç ³­¼ö¸¦ ¹İÈ¯ÇÑ´Ù¸é
+    // > void srand´Â seed¸¦ ÃÊ±âÈ­ÇÑ´Ù. º¸Åë seed´Â time(NULL)·Î ¼³Á¤µÈ´Ù.
 
-    // numberë¥¼ ë³€ìˆ˜ë¡œ ë§Œë“œëŠ” ê²ƒë³´ë‹¤, number[n]ì˜ ë¦¬ìŠ¤íŠ¸ í˜•íƒœë¡œ ì •ì˜í•˜ë©´ í•  ìˆ˜ ìˆëŠ” ì‘ì—…ë“¤ì´ ë§ì•„ì§„ë‹¤.
+    // number¸¦ º¯¼ö·Î ¸¸µå´Â °Íº¸´Ù, number[n]ÀÇ ¸®½ºÆ® ÇüÅÂ·Î Á¤ÀÇÇÏ¸é ÇÒ ¼ö ÀÖ´Â ÀÛ¾÷µéÀÌ ¸¹¾ÆÁø´Ù.
 
-    // -> srandë¥¼ ì´ìš©í•œ ë‚œìˆ˜ ì¶œë ¥, í‰ê· , ìµœëŒ€, ìµœì†Œ êµ¬í•˜ê¸° (ì¬ì—´ ì‹¤ìŠµ2)
+    // -> srand¸¦ ÀÌ¿ëÇÑ ³­¼ö Ãâ·Â, Æò±Õ, ÃÖ´ë, ÃÖ¼Ò ±¸ÇÏ±â (Àç¿­ ½Ç½À2)
     // int number[SIZE];
     // int total = 0;
     // int max, min;
@@ -98,8 +120,8 @@ int main(void)
     // printf("avg = %f, max = %d, min = %d", avg, max, min);
     */
 
-    // ë°°ì—´ ì‹¤ìŠµ3
-    // ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬
+    // ¹è¿­ ½Ç½À3
+    // ³»¸²Â÷¼ø Á¤·Ä
     // int number[SIZE] = {0};
     // int most;
     // int temp;
@@ -126,7 +148,7 @@ int main(void)
     //     }
     // }
 
-    // test í•¨ìˆ˜
+    // test ÇÔ¼ö
     // int a = 50;
     // char ch = '*';
     // printf("main : a = %d, ch = %d\n", a, ch);
@@ -138,7 +160,7 @@ int main(void)
     // inputRandomArray(&number[0], SIZE);
     // printArray(number, SIZE);
 
-    // ë¬¸ìì—´ ì…ë¬¸
+    // ¹®ÀÚ¿­ ÀÔ¹®
     // char Message2[5] = {'a', 'b', 'c', 'd', 'e'};
     // char Message[5] = {'a', 'b', 'c', '\0'};
     
@@ -169,10 +191,29 @@ int main(void)
     //     i++;
     // }
     
-    // printf("ì…ë ¥ë¬¸ìì—´ : %s\n", input);
+    // printf("ÀÔ·Â¹®ÀÚ¿­ : %s\n", input);
     // for(int i=0;i<26;i++){
-    //     printf("%c ì¶œì—°íšŸìˆ˜ : %d\n", 'a' + i, count[i]);
+    //     printf("%c Ãâ¿¬È½¼ö : %d\n", 'a' + i, count[i]);
     // }
+
+    CIRCLE c1 = {{10, 10}, 4.5};
+    CIRCLE c2;
+    c2.radius = 5.5;
+    c2.center.x = 10;
+    c2.center.y = 20;
+    POINT point = {10,15};
+    double distance;
+
+    printf("CIRCLE1 = (%d, %d), r : %lf\n", c1.center.x, c1.center.y, c1.radius);
+    printf("CIRCLE2 = (%d, %d), r : %lf\n", c2.center.x, c2.center.y, c2.radius);
+    printf("point = (%d, %d)\n", point.x, point.y);
+
+    distance = dist(c1.center, point);
+    if(distance <= c1.radius){
+        printf("¿ø ¾È¿¡ ÀÖ½À´Ï´Ù.\n");
+    }else{
+        printf("¿ø ¹ÛÃ¼ ÀÖ½À´Ï´Ù.\n");
+    }
 
     return 0;
 }
