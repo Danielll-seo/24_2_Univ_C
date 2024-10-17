@@ -40,10 +40,31 @@
 // }
 
 // 구조체 실습 
-typedef struct pint{
+typedef struct point{
     int x;
     int y;
 }POINT;
+
+void input_random_point(POINT* p, int size)
+{
+    srand(((time(NULL))));
+    for(int i=0; i<SIZE; i++){
+        (p+i)->x = rand() % 101;
+        (p+i)->y = rand() % 101;
+    }
+}
+
+void swap_point(POINT* p1, POINT* p2)
+{
+    POINT temp;
+    temp = *p1;
+    *p1 = *p2;
+    *p2 = temp;
+}
+
+void print_pointer_array(POINT[] p, int size){
+    printf("");
+}
 
 // typedef struct circle{
 //     POINT center;   // 원의 중심
@@ -219,14 +240,23 @@ int main(void)
     POINT temp = {0, 0};
     int least;
 
-    srand(time(NULL));
-    for(int i=0; i<SIZE; i++){
-        point[i].x = rand() % 101;
-        point[i].y = rand() % 101;
-    }
+    input_random_point(point, SIZE);
     for(int i=0; i<SIZE; i++){
         printf("point[%d] : (%d, %d)\n", i, point[i].x, point[i].y);
     }
-
+    for(int i=0; i<SIZE; i++){
+        least = i;
+        for(int j=i+1; j<SIZE; j++){
+            if(point[least].x > point[j].x) least = j;
+            else if(point[least].x == point[j].x && point[least].y > point[j].y){
+                least = j;
+            }
+        }
+        swap_point(&point[i], point + least);
+    }
+    printf("after sorting>>>>>>>>>>>>>>\n");
+    for(int i=0; i<SIZE; i++){
+        printf("point[%3d] : (%3d, %3d)\n", i, point[i].x, point[i].y);
+    }
     return 0;
 }
