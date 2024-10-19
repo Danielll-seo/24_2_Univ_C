@@ -62,8 +62,27 @@ void swap_point(POINT* p1, POINT* p2)
     *p2 = temp;
 }
 
-void print_pointer_array(POINT[] p, int size){
-    printf("");
+void print_pointer_array(POINT p[], int size){
+    for(int i=0; i<size; i++){
+        printf("p[%3d] : (%3d, %3d)\n", i, p[i].x, p[i].y);
+    }
+}
+
+void selection_sort_point(POINT* point, int size){
+    int least;
+    for(int i=0; i<SIZE; i++){
+    printf("point[%d] : (%d, %d)\n", i, point[i].x, point[i].y);
+    }
+    for(int i=0; i<SIZE; i++){
+        least = i;
+        for(int j=i+1; j<SIZE; j++){
+            if(point[least].x > point[j].x) least = j;
+            else if((point+least)->x == point[j].x && point[least].y > point[j].y){
+                least = j;
+            }
+        }
+        swap_point(&point[i], point + least);
+    }
 }
 
 // typedef struct circle{
@@ -241,22 +260,9 @@ int main(void)
     int least;
 
     input_random_point(point, SIZE);
-    for(int i=0; i<SIZE; i++){
-        printf("point[%d] : (%d, %d)\n", i, point[i].x, point[i].y);
-    }
-    for(int i=0; i<SIZE; i++){
-        least = i;
-        for(int j=i+1; j<SIZE; j++){
-            if(point[least].x > point[j].x) least = j;
-            else if(point[least].x == point[j].x && point[least].y > point[j].y){
-                least = j;
-            }
-        }
-        swap_point(&point[i], point + least);
-    }
+    print_pointer_array(point, SIZE);
+    selection_sort_point(point, SIZE);
     printf("after sorting>>>>>>>>>>>>>>\n");
-    for(int i=0; i<SIZE; i++){
-        printf("point[%3d] : (%3d, %3d)\n", i, point[i].x, point[i].y);
-    }
+    print_pointer_array(point, SIZE);
     return 0;
 }
