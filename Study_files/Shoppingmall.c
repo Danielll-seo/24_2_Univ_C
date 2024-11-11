@@ -8,7 +8,7 @@ int main(void){
     int num;
     int Count;
     
-    printf("ÀÔ°íÇÒ »óÇ°ÀÇ °³¼ö(Á¾·ù)¸¦ ÀÔ·ÂÇÏ¼¼¿ä > ");
+    printf("ì…ê³ í•  ìƒí’ˆì˜ ê°œìˆ˜(ì¢…ë¥˜)ë¥¼ ì…ë ¥í•˜ì„¸ìš” > ");
     scanf("%d", &Count);
     
     int Num_of_Product[Count];
@@ -19,44 +19,44 @@ int main(void){
     printf("Num_of_Product > %d\n", b);
     printf("sell_product %d\n", c);
     
-    // °¢ »óÇ°ÀÇ Àç°í¼ö·® ÀÔ·Â
+    // ê° ìƒí’ˆì˜ ì¬ê³ ìˆ˜ëŸ‰ ì…ë ¥
     printf("\n");
     for(int i=0; i<Count; i++){
-        printf("%d¹øÂ° »óÇ°ÀÇ °¹¼ö¸¦ ÀÔ·Â > ", i+1);
+        printf("%dë²ˆì§¸ ìƒí’ˆì˜ ê°¯ìˆ˜ë¥¼ ì…ë ¥ > ", i+1);
         scanf("%d", &num);
         Num_of_Product[i] = num;
     }
     
-    // °¢ »óÇ°ÀÇ ÆÇ¸Å¼ö·® ÀÔ·Â
+    // ê° ìƒí’ˆì˜ íŒë§¤ìˆ˜ëŸ‰ ì…ë ¥
     printf("\n");
     for(int i=0; i<Count; i++){
-        printf("%d¹øÂ° »óÇ°ÀÇ ÆÇ¸Å¼ö·® ÀÔ·Â > ", i+1);
+        printf("%dë²ˆì§¸ ìƒí’ˆì˜ íŒë§¤ìˆ˜ëŸ‰ ì…ë ¥ > ", i+1);
         scanf("%d", &num);
         sell_product[i] = num;
         Num_of_Product[i] = Num_of_Product[i] - sell_product[i];
     }
     
     // id
-    printf("\n»óÇ°ÀÇ idÀÔ·Â > ");
+    printf("\nìƒí’ˆì˜ idì…ë ¥ > ");
     scanf("%d", &id);
-    printf("ÇØ´ç idÀÇ Àç°í > %d\n", Num_of_Product[id-1]);
+    printf("í•´ë‹¹ idì˜ ì¬ê³  > %d\n", Num_of_Product[id-1]);
     
-    // ÀüÃ¼ »óÇ° Àç°í¼ö·® Ãâ·Â 
+    // ì „ì²´ ìƒí’ˆ ì¬ê³ ìˆ˜ëŸ‰ ì¶œë ¥ 
     printf("\n");
     for(int i=0; i<Count; i++){
-        printf("%d¹øÂ° »óÇ°ÀÇ Àç°í¼ö·® > %d\n", i+1, Num_of_Product[i]);
+        printf("%dë²ˆì§¸ ìƒí’ˆì˜ ì¬ê³ ìˆ˜ëŸ‰ > %d\n", i+1, Num_of_Product[i]);
     }
 
-    // ÆÇ¸Å »óÇ°ÀÇ °¹¼ö ÇÕ»ê
+    // íŒë§¤ ìƒí’ˆì˜ ê°¯ìˆ˜ í•©ì‚°
     int sell_Hap=0;
     int Num_Hap=0;
     int Percent;
     for(int i=0; i<Count; i++){
         sell_Hap = sell_Hap + sell_product[i];
-        // Æ÷ÀÎÅÍÀÎ°¡
+        // í¬ì¸í„°ì¸ê°€
     }
     Percent = sell_Hap;
-    printf("ÃÑ ÆÇ¸Å·® > %d (ÆÇ¸ÅÀ² : %f)\n", sell_Hap);
+    printf("ì´ íŒë§¤ëŸ‰ > %d (íŒë§¤ìœ¨ : %f)\n", sell_Hap);
 
     return 0;
 }
