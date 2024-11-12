@@ -40,10 +40,12 @@
 // }
 
 // 구조체 실습 
+/*
 typedef struct point{
     int x;
     int y;
 }POINT;
+*/
 
 void input_random_point(POINT* p, int size)
 {
@@ -99,7 +101,44 @@ void selection_sort_point(POINT* point, int size){
 //     return sqrt(pow((p2.x - p1.x),2)+pow((p2.y - p1.y),2));
 // }
 
-int main(void)
+// 10주차 바이너리 실습3
+typedef struct point{
+    int x;
+    int y;
+}POINT;
+POINT makePoint(void){
+    POINT p;
+    scanf("%d %d", &p.x, &p.y);
+    return p;
+}
+void makeRandomPoints(POINT p[], int size){
+    srand(time(NULL));
+    for(int i=0; i<size; i++){
+        p[i].x = rand() % 100;
+        p[i].y = rand() % 100;
+    }
+}
+void printPoints(POINT p[], int size){
+    for(int i=0; i<size; i++)
+        printf("point[%d] = x : %d, y : %d\n", i, p[i].x, p[i].y);
+}
+void saveFILE(POINT p[], int size){
+    FILE* fp;
+    fp = fopen("struct.bin", "wb");
+    if(fp == NULL) exit(-1);
+    fwrite(p, sizeof(POINT), size, fp);
+    fclose(fp);
+}
+void loadFILE(POINT p[], int size){
+    FILE* fp;
+    fp = fopen("struct.bin", "rb");
+    if(fp == NULL) exit(-1);
+    fread(p, sizeof(POINT), size, fp);
+    fclose(fp);
+}
+
+
+int main()
 {
     /* int i = 0;
     // i = rand();
@@ -255,14 +294,74 @@ int main(void)
     //     printf("원 밖체 있습니다.\n");
     // }
 
-    POINT point[SIZE] = {0};
-    POINT temp = {0, 0};
-    int least;
+    // POINT point[SIZE] = {0};
+    // POINT temp = {0, 0};
+    // int least;
 
-    input_random_point(point, SIZE);
-    print_pointer_array(point, SIZE);
-    selection_sort_point(point, SIZE);
-    printf("after sorting>>>>>>>>>>>>>>\n");
-    print_pointer_array(point, SIZE);
+    // input_random_point(point, SIZE);
+    // print_pointer_array(point, SIZE);
+    // selection_sort_point(point, SIZE);
+    // printf("after sorting>>>>>>>>>>>>>>\n");
+    // print_pointer_array(point, SIZE);
+    // return 0;
+
+    // 10주차 바이너리 실습1
+    /*
+    char input[SIZE];
+    FILE* fp = NULL;
+    int i = 0;
+
+    if((fp = fopen("output.bin", "wb")) == NULL){
+        printf("error...");
+        return 0;
+    }
+    while(!feof(fp)){
+        fread(&input[i], sizeof(char), 1, fp);
+        i++;
+    }
+    input[--i] = '\0';
+    puts(input);
+
+    fclose(fp);
+    */
+
+    // 10주차 바이너리 실습2
+    /*
+    int array[1000];
+    FILE* fp;
+    int i = 0;
+    fp = fopen("array.bin", "wb");
+    if(fp == NULL) return -1;
+
+    fread(&array, sizeof(int), 100, fp);
+
+    for(int i=0; i<100; i++) printf("%d", array[i]);
+    fclose(fp);
+    */
+
+    // 10주차 바이너리 실습3
+    FILE* fp;
+    POINT p[10];
+    POINT p2;
+    int pi;
+    //vmakeRandomPoints(p, 10);
+    loadFILE(p, 10);
+    printPoints(p, 10);
+    // saveFILE(p, 10);
+
+    fp = open("struct.bin", "rb");
+    if(fp == NULL) exit(-1);
+    fseek(fp, sizeof(POINT)*3, SEEK_SET);
+    pi = ftell(fp);
+    printf("pi = %d\n", pi);
+    fread(&p2, sizeof(POINT), 1, fp);
+    printf("p2 -> x : %d, y : %d\n", p2.x, p2.y);
+    fseek(fp, sizeof(POINT)*-1, SEEK_END);
+    printf("pi = %d\n", ftell(fp));
+    fread(&p2, sizeof(POINT), 1, fp);
+    printf("p2 -> x : %d, y : %d\n", p2.x, p2.y);
+    fseek(fp, 0, SEEK_END);
+    printf("size = %ld\n", ftell(fp));
+    fclose(fp);
     return 0;
 }
