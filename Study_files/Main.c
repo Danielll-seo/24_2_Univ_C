@@ -147,6 +147,13 @@ typedef struct point{
     int y;
 }POINT;
 
+int inputMenu(void){
+    int input;
+    printf("메뉴입력(1.구조체 만들기, 2. 구조체 출력하기, -1. 종료) : ");
+    scanf("%d", &input);
+    return input;
+}
+
 int main()
 {
     /* int i = 0;
@@ -397,6 +404,13 @@ int main()
     */
 
     // 11주차 동적할당 활용 1
+    int menu;
+
+    do{
+        menu = inputMenu();
+    }while(menu > 0);
+
+    /*
     POINT* points;
     int count;
     scanf("%d", &count);
@@ -411,5 +425,6 @@ int main()
         printf("x = %d, y - %d\n", points[i].x, points[i].y);
     }
     free(points);
+    */
     return 0;
 }
