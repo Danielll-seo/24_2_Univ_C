@@ -149,7 +149,11 @@ typedef struct point{
 
 int inputMenu(void){
     int input;
-    printf("메뉴입력(1.구조체 만들기, 2. 구조체 출력하기, -1. 종료) : ");
+    printf("메 뉴 입 력 ================");
+    printf("1. point 만들기\n");
+    printf("2. point 출력하기\n");
+    printf("3. 화면 클리어\n");
+    printf("-1. 종료\n");
     scanf("%d", &input);
     return input;
 }
@@ -171,6 +175,37 @@ void freePoints(POINT* p[], int size){
     for(int i=0; i<size; i++){
         free(p[i]);
     }
+}
+
+int saveFile(POINT* p[], int count){
+    FILE* fp;
+    fp = fopen("points.bin", "ab");
+    if(fp == NULL) return 0;
+    for(int i=0; i<count; i++){
+        fwrite(p[i], sizeof(POINT), 1, fp);
+    }
+    fclose(fp);
+    return 1;
+}
+
+int loadFile(POINT* p[], int max){
+    FILE* fp;
+    int fSize, fCount;
+    fp = fopen("points.bin", "rb");
+    if(fp == NULL) return 0;
+
+    fseek(fp, 0, SEEK_END);
+    fSize = ftell(fp);
+    fCount = fSize / sizeof(POINT);
+    return(fp);
+
+    for(int i=0; i<fCount; i++){
+        if(i == max) break;
+        p[i] = (POINT*)malloc(sizeof(POINT));
+        fread(p[i], sizeof(POINT), 1, fp);
+    }
+    fclose(fp);
+    return fCount;
 }
 
 int main()
@@ -429,17 +464,31 @@ int main()
 
     do{
         menu = inputMenu();
-        if(menu == 1){
-            // 구조체 만들기
-            points[count] = makePoint();
-            count++;
-            printf("만들었습니다.");
-        }else if(menu == 2){
-            // 구조체 출력하기
-            printPoint(points, count);
-        }else if(menu == -1){
-            freePoints(points, count);
-            printf("프로그램을 종료합니다.\n");
+        switch(menu){
+            case 1:
+                points[count] = makePoint();
+                count++;
+                break;
+            case 2:
+                printPoint(points, count);
+                break;
+            case 3:
+                system("clear"); // Windows = system("cls");
+                break;
+            case 4: // file save
+                if(!saveFile(points, count)){
+                    printf("file open error...\n");
+                }else {
+                    printf("file writing success...\n");
+                }
+                break;
+            case 5: // load file
+                count = loadFile(points, 100);
+                break;
+            case -1:
+                freePoints(points, count);
+                printf("프로그램을 종료합니다.\n");
+                break;
         }
     }while(menu > 0);
 
