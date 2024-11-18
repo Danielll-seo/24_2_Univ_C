@@ -47,6 +47,7 @@ typedef struct point{
 }POINT;
 */
 
+/*
 void input_random_point(POINT* p, int size)
 {
     srand(((time(NULL))));
@@ -86,6 +87,7 @@ void selection_sort_point(POINT* point, int size){
         swap_point(&point[i], point + least);
     }
 }
+*/
 
 // typedef struct circle{
 //     POINT center;   // 원의 중심
@@ -102,6 +104,7 @@ void selection_sort_point(POINT* point, int size){
 // }
 
 // 10주차 바이너리 실습3
+/*
 typedef struct point{
     int x;
     int y;
@@ -136,7 +139,13 @@ void loadFILE(POINT p[], int size){
     fread(p, sizeof(POINT), size, fp);
     fclose(fp);
 }
+*/
 
+// 11주차 동적할당 활용 1
+typedef struct point{
+    int x;
+    int y;
+}POINT;
 
 int main()
 {
@@ -340,6 +349,7 @@ int main()
     */
 
     // 10주차 바이너리 실습3
+    /*
     FILE* fp;
     POINT p[10];
     POINT p2;
@@ -363,5 +373,43 @@ int main()
     fseek(fp, 0, SEEK_END);
     printf("size = %ld\n", ftell(fp));
     fclose(fp);
+    */
+
+    // 11주차 동적할당 실습
+    /*
+    char* pChar;
+    int* pInt;
+    int count;
+
+    scanf("%d", &count);
+    pInt = (int*)malloc(count*sizeof(int));
+
+    for(int i=0; i<count; i++) pInt[i] = rand() % 100;
+    for(int i=0; i<count; i++) printf("%d ", pInt[i]);
+
+    pChar = (char*)pInt;
+
+    while(getchar() != '\n');
+    gets(pChar);
+    puts(pChar);
+
+    free(pInt);
+    */
+
+    // 11주차 동적할당 활용 1
+    POINT* points;
+    int count;
+    scanf("%d", &count);
+
+    points = (POINT*)malloc(sizeof(POINT) * count);
+
+    for(int i=0; i<count; i++){
+        points[i].x = rand() % 100;
+        points[i].y = rand() % 100;
+    }
+    for(int i=0; i<count; i++){
+        printf("x = %d, y - %d\n", points[i].x, points[i].y);
+    }
+    free(points);
     return 0;
 }
