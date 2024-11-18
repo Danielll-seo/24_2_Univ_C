@@ -150,10 +150,7 @@ typedef struct point{
 int inputMenu(void){
     int input;
     printf("메 뉴 입 력 ================");
-    printf("1. point 만들기\n");
-    printf("2. point 출력하기\n");
-    printf("3. 화면 클리어\n");
-    printf("-1. 종료\n");
+    printf("1. 만들기, 2.출력하기, 3. 클리어, 4. 파일저장, 5. 파일로드, -1. 종료 : ");
     scanf("%d", &input);
     return input;
 }
